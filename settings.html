@@ -87,28 +87,48 @@
         </div>
 
         <div class="settings-grid">
-            <!-- BANK CONNECTION DASHBOARD -->
-            <div class="card">
-                <h3>Vault Connections</h3>
-                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Securely link your gold hoards via Sackville-Plaid.</p>
-                
-                <div class="bank-card">
-                    <div class="bank-info">
-                        <div class="bank-icon" style="color: #b45309;">S</div>
-                        <div><b>Sackville Savings</b><br><small>**** 8821</small></div>
+            <div class="main-settings-col">
+                <!-- Estate Membership Section -->
+                <div class="card" style="margin-bottom: 20px; border-left: 6px solid var(--primary);">
+                    <h3 style="margin-top: 0;">Estate Membership</h3>
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <p style="margin: 5px 0; font-size: 0.9rem;">
+                                <strong>Member Since:</strong> <span style="color: var(--primary); font-weight: 700;">1401 (Shire Reckoning)</span>
+                            </p>
+                            <p style="margin: 5px 0; font-size: 0.9rem;">
+                                <strong>Status:</strong> Senior Hoarder (Pro)
+                            </p>
+                        </div>
+                        <button onclick="confirmUnsubscribe()" style="background: transparent; color: #b91c1c; border: 1px solid #b91c1c; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">
+                            Unsubscribe
+                        </button>
                     </div>
-                    <div class="toggle active"></div>
                 </div>
 
-                <div class="bank-card">
-                    <div class="bank-info">
-                        <div class="bank-icon" style="color: #1e293b;">B</div>
-                        <div><b>Bree Federal Credit</b><br><small>**** 0042</small></div>
+                <!-- BANK CONNECTION DASHBOARD -->
+                <div class="card">
+                    <h3>Vault Connections</h3>
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Securely link your gold hoards via Sackville-Plaid.</p>
+                    
+                    <div class="bank-card">
+                        <div class="bank-info">
+                            <div class="bank-icon" style="color: #b45309;">S</div>
+                            <div><b>Sackville Savings</b><br><small>**** 8821</small></div>
+                        </div>
+                        <div class="toggle active"></div>
                     </div>
-                    <div class="toggle active"></div>
-                </div>
 
-                <button style="width: 100%; background: #f3f4f6; color: var(--text-main); border: 1px dashed #cbd5e1; margin-top: 10px; padding: 12px;">+ Connect New Hoard</button>
+                    <div class="bank-card">
+                        <div class="bank-info">
+                            <div class="bank-icon" style="color: #1e293b;">B</div>
+                            <div><b>Bree Federal Credit</b><br><small>**** 0042</small></div>
+                        </div>
+                        <div class="toggle active"></div>
+                    </div>
+
+                    <button style="width: 100%; background: #f3f4f6; color: var(--text-main); border: 1px dashed #cbd5e1; margin-top: 10px; padding: 12px; border-radius: 8px; cursor: pointer;">+ Connect New Hoard</button>
+                </div>
             </div>
 
             <!-- OTHER PREFERENCES -->
@@ -131,10 +151,10 @@
                         </div>
                     </div>
                 </div>
-
+            
                 <div class="card" style="margin-top: 20px; border-left: 4px solid #ef4444;">
                     <h3 style="color: #ef4444;">Danger Zone</h3>
-                    <button onclick="localStorage.clear(); location.href='logout.html'" style="background: transparent; border: 1px solid #ef4444; color: #ef4444; width: 100%; margin-top: 10px;">Purge All Hoard Data</button>
+                    <button onclick="localStorage.clear(); location.href='index.html'" style="background: transparent; border: 1px solid #ef4444; color: #ef4444; width: 100%; margin-top: 10px; padding: 10px; border-radius: 6px; cursor: pointer;">Purge All Hoard Data</button>
                 </div>
             </div>
         </div>
@@ -148,7 +168,13 @@
         function applyVibe() {
             const vibe = document.getElementById('vibeInput').value;
             alert(`AI Architect: Initializing ${vibe} transformation. Please wait for the Council to repaint the scrolls.`);
-            // This references the vibe logic seen in index_2.html
+        }
+
+        function confirmUnsubscribe() {
+            if (confirm("Are you sure you wish to leave CAPITelle? This will notify the Sackville-Bagginses of your departure.")) {
+                alert("Subscription cancelled. You will be redirected to the main gate.");
+                window.location.href = "index.html"; 
+            }
         }
 
         // Simple toggle visual
