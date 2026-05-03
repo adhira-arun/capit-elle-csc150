@@ -9,7 +9,7 @@
         .logo { text-decoration: none; font-size: 1.6rem; font-weight: 800; }
         .settings-grid { display: grid; grid-template-columns: 1fr 350px; gap: 25px; margin-top: 2rem; }
         
-        /* AI CHAT PROMPT SECTION */
+        /* AI CONFIG PROMPT SECTION */
         .ai-config-box { 
             background: linear-gradient(135deg, #1e293b 0%, #334155 100%); 
             color: white; 
@@ -27,13 +27,14 @@
             color: white; 
             font-family: inherit; 
             font-size: 1.1rem; 
+            height: 80px;
             resize: none; 
             outline: none;
         }
         .config-input-area textarea::placeholder { color: #94a3b8; }
         .example-tags { margin-top: 15px; display: flex; gap: 10px; flex-wrap: wrap; }
         .tag { font-size: 0.75rem; background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 20px; color: #cbd5e1; cursor: pointer; transition: 0.3s; }
-        .tag:hover { background: var(--primary); color: white; }
+        .tag:hover { background: #64748b; color: white; }
 
         /* BANK CONNECTION CARDS */
         .bank-card { 
@@ -41,7 +42,7 @@
             align-items: center; 
             justify-content: space-between; 
             padding: 15px; 
-            border: 1px solid var(--border); 
+            border: 1px solid #e2e8f0; 
             border-radius: 12px; 
             margin-bottom: 12px; 
         }
@@ -60,61 +61,60 @@
     <nav>
         <a href="index.html" class="logo"><span class="capit">CAPIT</span><span class="elle">elle</span></a>
         <div class="nav-links">
-            <a href="landing.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="dashboard.html">Dashboard</a>
             <a href="goals.html">Goals</a>
             <a href="strategy.html">Strategy</a>
-            <a href="settings.html" style="font-weight: 800; color: var(--primary); margin-left: 10px;">Hi, Lobelia</a>
-            <a href="index.html" class="logout-btn">Logout</a>
+            <a href="settings.html" style="font-weight: 800; color: #1e293b; margin-left: 10px;">Hi, Lobelia</a>
+            <a href="logout.html" class="logout-btn" onclick="localStorage.clear()">Logout</a>
         </div>
     </nav>
 
     <div class="container">
         <!-- AI CONFIG PROMINENT AT TOP -->
         <div class="ai-config-box">
-            <span class="badge" style="background: var(--primary); border: none; color: white;">Global UI Architect</span>
-            <h2>How should the Estate look?</h2>
+            <span class="badge" style="background: rgba(255,255,255,0.2); border: none; color: white;">Global UI Architect</span>
+            <h2>How should your Estate look?</h2>
             <div class="config-input-area">
-                <textarea id="vibeInput" placeholder="Describe your layout preference..."></textarea>
+                <textarea id="vibeInput" placeholder="Try 'cottage core', 'dark academia', or 'y2k'..."></textarea>
                 <div class="example-tags">
-                    <span class="tag" onclick="useTag('Cottagecore')">cottagecore</span>
-                    <span class="tag" onclick="useTag('Corporate Barbie')">corporate barbie</span>
-                    <span class="tag" onclick="useTag('Sad Beige Mom')">sad beige mom</span>
-                    <span class="tag" onclick="useTag('Shirecore')">shirecore</span>
+                    <span class="tag" onclick="useTag('cottage core')">cottage core</span>
+                    <span class="tag" onclick="useTag('dark academia')">dark academia</span>
+                    <span class="tag" onclick="useTag('y2k')">y2k</span>
                 </div>
             </div>
-            <button onclick="applyVibe()" style="margin-top: 20px; background: white; color: #1e293b; border: none; padding: 10px 25px; border-radius: 8px; font-weight: 700; cursor: pointer;">Redesign Entire Site</button>
+            <button onclick="applyVibe()" style="margin-top: 20px; background: white; color: #1e293b; border: none; padding: 12px 30px; border-radius: 30px; font-weight: 700; cursor: pointer;">Tell me your vibe</button>
         </div>
 
         <div class="settings-grid">
             <div class="main-settings-col">
                 <!-- Estate Membership Section -->
-                <div class="card" style="margin-bottom: 20px; border-left: 6px solid var(--primary);">
-                    <h3 style="margin-top: 0;">Estate Membership</h3>
+                <div class="card" style="margin-bottom: 20px; border-left: 6px solid #1e293b;">
+                    <h3 style="margin-top: 0;">Membership Tier</h3>
                     <div style="display: flex; justify-content: space-between; align-items: center;">
                         <div>
                             <p style="margin: 5px 0; font-size: 0.9rem;">
-                                <strong>Member Since:</strong> <span style="color: var(--primary); font-weight: 700;">1401 (Shire Reckoning)</span>
+                                <strong>Status:</strong> CAPITelle Pro Member
                             </p>
                             <p style="margin: 5px 0; font-size: 0.9rem;">
-                                <strong>Status:</strong> Senior Hoarder (Pro)
+                                <strong>Renewal Date:</strong> June 14, 2026
                             </p>
                         </div>
                         <button onclick="confirmUnsubscribe()" style="background: transparent; color: #b91c1c; border: 1px solid #b91c1c; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 0.8rem;">
-                            Unsubscribe
+                            Cancel Plan
                         </button>
                     </div>
                 </div>
 
                 <!-- BANK CONNECTION DASHBOARD -->
                 <div class="card">
-                    <h3>Vault Connections</h3>
-                    <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 20px;">Securely link your gold hoards via Sackville-Plaid.</p>
+                    <h3>Linked Institutions</h3>
+                    <p style="color: #64748b; font-size: 0.85rem; margin-bottom: 20px;">Your encrypted vault connections are active.</p>
                     
                     <div class="bank-card">
                         <div class="bank-info">
                             <div class="bank-icon" style="color: #b45309;">S</div>
-                            <div><b>Sackville Savings</b><br><small>**** 8821</small></div>
+                            <div><b>Sackville Bank & Trust</b><br><small>Checking •••• 8821</small></div>
                         </div>
                         <div class="toggle active"></div>
                     </div>
@@ -122,12 +122,12 @@
                     <div class="bank-card">
                         <div class="bank-info">
                             <div class="bank-icon" style="color: #1e293b;">B</div>
-                            <div><b>Bree Federal Credit</b><br><small>**** 0042</small></div>
+                            <div><b>Bree Federal Credit</b><br><small>Savings •••• 0042</small></div>
                         </div>
                         <div class="toggle active"></div>
                     </div>
 
-                    <button style="width: 100%; background: #f3f4f6; color: var(--text-main); border: 1px dashed #cbd5e1; margin-top: 10px; padding: 12px; border-radius: 8px; cursor: pointer;">+ Connect New Hoard</button>
+                    <button style="width: 100%; background: #f8fafc; color: #1e293b; border: 1px dashed #cbd5e1; margin-top: 10px; padding: 12px; border-radius: 8px; cursor: pointer; font-weight: 600;">+ Connect New Institution</button>
                 </div>
             </div>
 
@@ -136,25 +136,26 @@
                 <div class="card">
                     <h3>Preferences</h3>
                     <div style="margin-top: 15px;">
-                        <label style="font-size: 0.8rem; font-weight: 700;">Currency Display</label>
-                        <select style="width: 100%; padding: 8px; border-radius: 5px; margin-top: 5px; margin-bottom: 15px;">
-                            <option>Gold Pieces (GP)</option>
-                            <option>Silver Spoons (SP)</option>
+                        <label style="font-size: 0.8rem; font-weight: 700; color: #475569;">Default Currency</label>
+                        <select style="width: 100%; padding: 10px; border: 1px solid #e2e8f0; border-radius: 8px; margin-top: 5px; margin-bottom: 15px;">
                             <option>USD ($)</option>
+                            <option>EUR (€)</option>
+                            <option>GBP (£)</option>
+                            <option>Gold Pieces (GP)</option>
                         </select>
 
-                        <label style="font-size: 0.8rem; font-weight: 700;">AI Sass Level</label>
-                        <input type="range" style="width: 100%; margin-top: 5px;">
-                        <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: var(--text-muted);">
-                            <span>Helpful</span>
-                            <span>Judgmental</span>
+                        <label style="font-size: 0.8rem; font-weight: 700; color: #475569;">AI Intensity</label>
+                        <input type="range" style="width: 100%; margin-top: 10px;">
+                        <div style="display: flex; justify-content: space-between; font-size: 0.7rem; color: #94a3b8; margin-top: 5px;">
+                            <span>Passive</span>
+                            <span>Proactive</span>
                         </div>
                     </div>
                 </div>
             
                 <div class="card" style="margin-top: 20px; border-left: 4px solid #ef4444;">
-                    <h3 style="color: #ef4444;">Danger Zone</h3>
-                    <button onclick="localStorage.clear(); location.href='index.html'" style="background: transparent; border: 1px solid #ef4444; color: #ef4444; width: 100%; margin-top: 10px; padding: 10px; border-radius: 6px; cursor: pointer;">Purge All Hoard Data</button>
+                    <h3 style="color: #ef4444;">Account Actions</h3>
+                    <button onclick="localStorage.clear(); location.reload();" style="background: transparent; border: 1px solid #ef4444; color: #ef4444; width: 100%; margin-top: 10px; padding: 10px; border-radius: 6px; cursor: pointer; font-weight: 600;">Reset Cache Data</button>
                 </div>
             </div>
         </div>
@@ -162,22 +163,29 @@
 
     <script>
         function useTag(text) {
-            document.getElementById('vibeInput').value = `I want a ${text} layout for the whole site.`;
+            document.getElementById('vibeInput').value = text;
         }
 
         function applyVibe() {
-            const vibe = document.getElementById('vibeInput').value;
-            alert(`AI Architect: Initializing ${vibe} transformation. Please wait for the Council to repaint the scrolls.`);
-        }
-
-        function confirmUnsubscribe() {
-            if (confirm("Are you sure you wish to leave CAPITelle? This will notify the Sackville-Bagginses of your departure.")) {
-                alert("Subscription cancelled. You will be redirected to the main gate.");
-                window.location.href = "index.html"; 
+            const vibe = document.getElementById('vibeInput').value.toLowerCase();
+            
+            if (vibe.includes('cottage core')) {
+                window.location.href = 'vibe_cottage.html';
+            } else if (vibe.includes('dark academia')) {
+                window.location.href = 'vibe_academia.html';
+            } else if (vibe.includes('y2k')) {
+                window.location.href = 'vibe_y2k.html';
+            } else {
+                alert("The AI Architect is searching for that specific vibe. Try 'cottage core', 'dark academia', or 'y2k' for the preview demo!");
             }
         }
 
-        // Simple toggle visual
+        function confirmUnsubscribe() {
+            if (confirm("Are you sure you want to cancel your Pro membership?")) {
+                window.location.href = "logout_2.html"; 
+            }
+        }
+
         document.querySelectorAll('.toggle').forEach(t => {
             t.onclick = function() { this.classList.toggle('active'); }
         });
